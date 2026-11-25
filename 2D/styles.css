@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "NeoDunggeunmo Pro";
+  src: url("./fonts/NeoDunggeunmoPro-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  color-scheme: dark;
+  font-family: "NeoDunggeunmo Pro", system-ui, sans-serif;
+  background: #141014;
+  color: #f9eef1;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.experience { position: relative; }
+.viewer { position: relative; height: 100vh; height: 100dvh; background: #160c14; overflow: hidden; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+canvas:active { cursor: grabbing; }
+canvas:focus-visible { outline-offset: -4px; }
+.loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: max-content; max-width: 85%; text-align: center; background: #21171d; border: 1px solid #47313b; border-radius: 12px; padding: 14px 18px; }
+.seat-controls {
+  position: absolute;
+  inset-inline: 0;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  text-align: center;
+  pointer-events: none;
+}
+.seat-controls select, .seats button { pointer-events: auto; }
+.seats {
+  --seat-width: 64px;
+  --seat-gap: 8px;
+  width: calc(3 * var(--seat-width) + 2 * var(--seat-gap));
+  margin-inline: auto;
+  overflow: hidden;
+}
+.seat-track {
+  display: flex;
+  gap: var(--seat-gap);
+  transform: translateX(calc(-1 * var(--seat-index, 0) * (var(--seat-width) + var(--seat-gap))));
+}
+.seat-track.is-ready {
+  transition: transform 640ms cubic-bezier(.42, 0, .58, 1);
+}
+.seat-track > * {
+  display: grid;
+  place-items: center;
+  flex: 0 0 var(--seat-width);
+  min-height: 44px;
+  font: inherit;
+  font-size: 1.125rem;
+  color: #ffda76;
+  opacity: .5;
+}
+.seats button {
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.seats button:disabled { cursor: default; }
+.seats button[aria-pressed="true"] { opacity: 1; }
+.seats button:focus-visible { outline-offset: -3px; }
+@media (prefers-reduced-motion: reduce) {
+  .seat-track.is-ready { transition: none; }
+}
+button:focus-visible, select:focus-visible, canvas:focus-visible { outline: 2px solid #ffda76; }
