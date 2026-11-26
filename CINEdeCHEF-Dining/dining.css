@@ -1,0 +1,4 @@
+.dining-controls { display: inline-grid; grid-template-columns: 44px minmax(0, 22rem) 44px; align-items: center; max-width: 100%; color: #ffda76; text-shadow: 0 1px 4px #170c06, 0 1px 10px #170c06; }
+.dining-controls strong, .dining-controls small { display: block; }
+.dining-controls small { color: #fff0d7; font-size: .9rem; margin-top: .3rem; }
+.dining-controls button { pointer-events: auto; font: inherit; font-size: 2rem; color: inherit; text-shadow: inherit; background: transparent; border: 0; cursor: pointer; min-height: 44px; }
